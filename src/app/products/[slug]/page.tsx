@@ -6,7 +6,6 @@ import { CategorySchematic } from '@/components/schematics/CategorySchematic';
 import { EnquiryForm } from '@/components/EnquiryForm';
 import { Pending, PendingBlock } from '@/components/Pending';
 import { ArrowRight } from '@/components/Icons';
-import PumpViewer from '@/components/viewer/PumpViewer';
 import { getProduct, products } from '@/content/products';
 import { getApplication, sectors } from '@/content/applications';
 import { ContactList } from '@/components/ContactLinks';
@@ -72,11 +71,6 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
             <li>
               <a href="#overview">Overview</a>
             </li>
-            {p.has3D && (
-              <li>
-                <a href="#model">3D model</a>
-              </li>
-            )}
             <li>
               <a href="#specifications">Specifications</a>
             </li>
@@ -114,20 +108,6 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
-      {p.has3D && (
-        <section id="model" className="section section--dark" aria-labelledby="model-title">
-          <div className="container">
-            <div className="section-head">
-              <p className="label">Interactive 3D model</p>
-              <h2 id="model-title">Reference model: compact submersible pump.</h2>
-              <p className="section-intro">
-                Built from supplied engineering CAD. It shows the construction of a compact submersible unit and is not a specific model from this range.
-              </p>
-            </div>
-            <PumpViewer variant="full" label={`3D reference model for ${p.name}`} />
-          </div>
-        </section>
-      )}
 
       {/* Specifications */}
       <section id="specifications" className="section section--paper2" aria-labelledby="spec-title">

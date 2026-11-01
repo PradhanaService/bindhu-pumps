@@ -41,8 +41,6 @@ export type ProductCategory = {
   selectionInputs: string[];
   documents: TechDocument[];
   related: string[];
-  /** True when the interactive CAD-based 3D model is relevant to this category. */
-  has3D: boolean;
   schematic: 'submersible' | 'borewell' | 'openwell' | 'agriculture' | 'monoblock';
 };
 
@@ -95,7 +93,6 @@ export const products: ProductCategory[] = [
     ],
     documents: [],
     related: ['borewell-pumps', 'openwell-pumps', 'monoblock-pumps'],
-    has3D: true,
     schematic: 'submersible',
   },
   {
@@ -136,7 +133,6 @@ export const products: ProductCategory[] = [
     ],
     documents: [],
     related: ['submersible-pumps', 'agriculture-pumps', 'openwell-pumps'],
-    has3D: false,
     schematic: 'borewell',
   },
   {
@@ -174,7 +170,6 @@ export const products: ProductCategory[] = [
     ],
     documents: [],
     related: ['submersible-pumps', 'agriculture-pumps', 'monoblock-pumps'],
-    has3D: false,
     schematic: 'openwell',
   },
   {
@@ -212,7 +207,6 @@ export const products: ProductCategory[] = [
     ],
     documents: [],
     related: ['borewell-pumps', 'openwell-pumps', 'monoblock-pumps'],
-    has3D: false,
     schematic: 'agriculture',
   },
   {
@@ -250,7 +244,6 @@ export const products: ProductCategory[] = [
     ],
     documents: [],
     related: ['agriculture-pumps', 'openwell-pumps', 'submersible-pumps'],
-    has3D: false,
     schematic: 'monoblock',
   },
 ];
