@@ -1,0 +1,192 @@
+/* ---------- Product photo / placeholder ---------- */
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--white);
+  overflow: hidden;
+}
+.photoImg {
+  object-fit: contain;
+  padding: 6%;
+}
+.placeholder {
+  display: grid;
+  place-items: center;
+  background-color: var(--white);
+  background-image: linear-gradient(to right, rgba(13, 24, 36, 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(13, 24, 36, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.placeholderDark {
+  background-color: #16273a;
+  background-image: linear-gradient(to right, rgba(122, 150, 180, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(122, 150, 180, 0.08) 1px, transparent 1px);
+}
+.placeholderArt {
+  width: 62%;
+  opacity: 0.9;
+}
+.placeholderNote {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel-500);
+}
+.placeholderDark .placeholderNote {
+  color: var(--steel-300);
+}
+
+/* ---------- Product card ---------- */
+.card {
+  border: 1px solid var(--line);
+  background: var(--white);
+  transition: border-color 0.18s var(--ease);
+  min-width: 0;
+}
+.card:hover {
+  border-color: var(--ink);
+}
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.cardLink .photo {
+  border-bottom: 1px solid var(--line);
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px 16px;
+  flex: 1;
+}
+.cardCat {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.cardName {
+  font-size: 1.0625rem;
+  line-height: 1.25;
+}
+.cardTag {
+  font-size: 0.8125rem;
+  color: var(--steel-700);
+  line-height: 1.45;
+}
+.cardPrice {
+  margin-top: auto !important;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+.cardPrice :global(.pending) {
+  font-weight: 400;
+  font-size: 0.6875rem;
+  padding: 1px 6px;
+}
+
+.cardDark {
+  background: var(--ink-2);
+  border-color: var(--ink-3);
+  color: var(--white);
+}
+.cardDark:hover {
+  border-color: var(--steel-500);
+}
+.cardDark .cardLink .photo {
+  border-bottom-color: var(--ink-3);
+}
+.cardDark .cardCat {
+  color: var(--accent);
+}
+.cardDark .cardTag {
+  color: var(--steel-300);
+}
+
+/* Row layout: image beside text, for compact lists */
+.cardRow .cardLink {
+  flex-direction: row;
+}
+.cardRow .cardLink .photo {
+  flex: 0 0 42%;
+  aspect-ratio: auto;
+  min-height: 150px;
+  border-bottom: 0;
+  border-right: 1px solid var(--line);
+}
+.cardRow.cardDark .cardLink .photo {
+  border-right-color: var(--ink-3);
+}
+.cardRow .placeholderArt {
+  width: 78%;
+}
+.cardRow .placeholderNote {
+  display: none;
+}
+.cardRow .cardName {
+  font-size: 1rem;
+}
+
+/* ---------- Add to cart ---------- */
+.atc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.qty {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  background: var(--white);
+  height: 48px;
+}
+.qty button {
+  width: 44px;
+  border: 0;
+  background: transparent;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+.qty button:hover:not(:disabled) {
+  background: var(--paper-2);
+}
+.qty button:disabled {
+  color: var(--steel-500);
+  cursor: default;
+}
+.qty input {
+  width: 52px;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  text-align: center;
+  background: transparent;
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+}
+.qty input::-webkit-outer-spin-button,
+.qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.atcStatus {
+  flex-basis: 100%;
+  font-size: 0.875rem;
+  color: var(--steel-700);
+  min-height: 1.4em;
+}
+.atcCompact .atcStatus {
+  display: none;
+}

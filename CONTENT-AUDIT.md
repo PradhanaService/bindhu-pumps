@@ -42,6 +42,14 @@ Edit the files listed. Removing a `null` removes its marker automatically.
 - [ ] `documents`: catalogue PDFs and performance curves (put files in `public/docs/`)
 - [ ] Optional: product photographs from the business
 
+### `src/content/catalogue.ts` (shop)
+The six shop products are **samples** added to review the shop layout. Their names, prices and
+specifications are examples, shown on the site with "Sample" tags.
+- [ ] Replace each item with a real product: name, SKU, category, price (INR), description, highlights, specs
+- [ ] Add product photos to `public/images/products/` and list them in `images`
+- [ ] Set `isSample: false` on each real item (removes its Sample tags and the shop's sample notice)
+- [ ] Add a GLB per product in `public/models/` when available; until then every product shows the reference model
+
 ### `src/content/services.ts`
 - [ ] Warranty periods, terms and claim procedure
 - [ ] AMC plan scope, visit frequency, pricing

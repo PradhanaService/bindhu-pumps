@@ -2,9 +2,10 @@ import Link from 'next/link';
 import PumpViewer from '@/components/viewer/PumpViewer';
 import { CategorySchematic } from '@/components/schematics/CategorySchematic';
 import { CtaBand } from '@/components/CtaBand';
+import { ProductCard } from '@/components/shop/ProductCard';
+import { catalogue } from '@/content/catalogue';
 import { ArrowRight } from '@/components/Icons';
 import { products } from '@/content/products';
-import { sectors } from '@/content/applications';
 import { services } from '@/content/services';
 import { brand, siteUrl, siteDescription } from '@/content/site';
 import s from './home.module.css';
@@ -17,6 +18,8 @@ const selectionInputs = [
   { title: 'Power supply', body: 'Single phase or three phase, and the hours supply is available. This sets the motor and the starter.' },
   { title: 'Water quality', body: 'Clear, sandy, or carrying solids. This affects the pump construction and materials.' },
 ];
+
+const featured = catalogue.filter((i) => i.featured).slice(0, 4);
 
 export default function HomePage() {
   const jsonLd = {
@@ -44,7 +47,7 @@ export default function HomePage() {
               site, and supported after installation with maintenance and AMC plans.
             </p>
             <div className={s.heroActions}>
-              <Link href="/products" className="btn btn--primary">
+              <Link href="/shop" className="btn btn--primary">
                 Explore products <ArrowRight />
               </Link>
               <Link href="/contact#enquiry" className="btn btn--ghost">
@@ -52,13 +55,22 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className={s.heroVisual}>
-            <PumpViewer variant="hero" label="Interactive 3D reference model of a compact submersible pump" />
-            <p className={s.heroVisualNote}>
-              <span>Drag to rotate</span>
-              <span>Scroll to zoom</span>
-              <Link href="#explorer">Exploded and section views</Link>
-            </p>
+          <div className={s.heroShop} aria-labelledby="hero-shop-title">
+            <div className={s.heroShopHead}>
+              <h2 id="hero-shop-title" className={s.heroShopTitle}>
+                Products for sale
+              </h2>
+              <Link href="/shop" className={s.heroShopAll}>
+                View all {catalogue.length} products <ArrowRight />
+              </Link>
+            </div>
+            <ul className={s.heroShopGrid}>
+              {featured.map((item) => (
+                <li key={item.slug}>
+                  <ProductCard item={item} tone="dark" layout="row" sizes="(min-width: 1100px) 12vw, 40vw" />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -142,71 +154,6 @@ export default function HomePage() {
             </p>
           </div>
           <PumpViewer variant="full" label="3D pump explorer" />
-        </div>
-      </section>
-
-      {/* ---------- Applications matrix ---------- */}
-      <section className="section section--paper2" aria-labelledby="apps-title">
-        <div className="container">
-          <div className="section-head">
-            <p className="label">Applications</p>
-            <h2 id="apps-title">Which categories are considered for each application.</h2>
-            <p className="section-intro">
-              The marked categories are the usual starting points. The final choice depends on the duty: depth, head, flow and the power available on site.
-            </p>
-          </div>
-          <p className={s.scrollHint} aria-hidden="true">
-            Swipe the table sideways to see all categories
-          </p>
-          <div className={`table-scroll ${s.matrixWrap}`} tabIndex={0} role="region" aria-label="Application and product category matrix">
-            <table className={s.matrix}>
-              <caption className="sr-only">Pump categories commonly considered for each application</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Application</th>
-                  {products.map((p) => (
-                    <th scope="col" key={p.slug}>
-                      <Link href={`/products/${p.slug}`}>{p.name.replace(' Pumps', '')}</Link>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              {sectors.map((sector) => (
-                <tbody key={sector.slug}>
-                  <tr className={s.matrixSector}>
-                    <th scope="colgroup" colSpan={products.length + 1}>
-                      <Link href={`/applications#${sector.slug}`}>{sector.name}</Link>
-                    </th>
-                  </tr>
-                  {sector.applications.map((a) => (
-                    <tr key={a.slug}>
-                      <th scope="row">{a.name}</th>
-                      {products.map((p) => {
-                        const hit = a.categories.find((c) => c.slug === p.slug);
-                        return (
-                          <td key={p.slug} title={hit ? hit.reason : undefined}>
-                            {hit ? (
-                              <>
-                                <span className={s.mark} aria-hidden="true" />
-                                <span className="sr-only">Considered: {hit.reason}</span>
-                              </>
-                            ) : (
-                              <span className="sr-only">Not typical</span>
-                            )}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              ))}
-            </table>
-          </div>
-          <div className={s.rangeFoot}>
-            <Link href="/applications" className="link-arrow">
-              Application details <ArrowRight />
-            </Link>
-          </div>
         </div>
       </section>
 

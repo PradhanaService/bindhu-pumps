@@ -7,6 +7,7 @@ import { products } from '@/content/products';
 import { sectors } from '@/content/applications';
 import { Wordmark } from './Wordmark';
 import { ArrowRight } from './Icons';
+import { useCart } from './shop/CartProvider';
 
 const links = [
   { href: '/applications', label: 'Applications' },
@@ -21,6 +22,7 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const productsRef = useRef<HTMLLIElement>(null);
+  const { count, ready } = useCart();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -115,6 +117,15 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
+
+        <Link href="/cart" className="cart-link" aria-label={ready && count ? `Cart, ${count} ${count === 1 ? 'item' : 'items'}` : 'Cart'}>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M2 3h2.2l2 10h9.3l1.8-7H5.3" />
+            <circle cx="8" cy="16.5" r="1.3" />
+            <circle cx="14.5" cy="16.5" r="1.3" />
+          </svg>
+          {ready && count > 0 && <span className="cart-link__count">{count > 99 ? '99+' : count}</span>}
+        </Link>
 
         <Link href="/contact#enquiry" className="btn btn--primary site-header__cta">
           Request a quote

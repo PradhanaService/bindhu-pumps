@@ -27,6 +27,7 @@ src/
     products.ts       Five categories: overview, construction, features, specs, applications
     applications.ts   Sectors, applications, category mapping
     services.ts       Service offerings
+    catalogue.ts      Products for sale: price, photos, description, specs, 3D model
     pump-model.ts     3D model parts, hotspots, camera views, measured dimensions
   components/
     viewer/           PumpViewer (shell: lazy-load, fallback, controls, panel) + PumpScene (R3F)
@@ -42,9 +43,18 @@ public/images/        Static fallback render of the model
 
 ## Pages
 
-`/` home · `/products` · `/products/[slug]` (5 categories, one template) · `/applications` · `/company` ·
+`/` home · `/shop` · `/shop/[slug]` · `/cart` · `/products` · `/products/[slug]` (5 categories, one template) · `/applications` · `/company` ·
 `/service` · `/contact` (accepts `?product=` and `?application=` to prefill) · `/privacy` · `/terms` ·
 `sitemap.xml` · `robots.txt`
+
+## Shop and cart
+
+- `/shop` lists the catalogue (`src/content/catalogue.ts`) with category filters; `/shop/[slug]` shows
+  photos, price, description, specifications, add to cart, and the 3D model.
+- The cart lives in the visitor's browser (localStorage). `/cart` sends an **order request**, not a payment:
+  `POST /api/order` re-reads every price from the catalogue (browser prices are ignored) and delivers the order
+  through the same webhook or email setup as enquiries. The business then confirms price, delivery and payment.
+- The catalogue currently holds sample products marked "Sample". See `CONTENT-AUDIT.md`.
 
 ## 3D explorer
 

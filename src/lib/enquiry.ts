@@ -32,8 +32,8 @@ export const LIMITS = {
   message: 3000,
 } as const;
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE_RE = /^\+?[\d\s()-]{7,25}$/;
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+export const PHONE_RE = /^\+?[\d\s()-]{7,25}$/;
 
 const productValues = new Set(productOptions.map((p) => p.value).concat(['not-sure']));
 const applicationValues = new Set(allApplications.map((a) => a.slug).concat(['other']));

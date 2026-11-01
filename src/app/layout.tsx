@@ -10,6 +10,7 @@ import './chrome.css';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { RevealObserver } from '@/components/RevealObserver';
+import { CartProvider } from '@/components/shop/CartProvider';
 import { brand, siteDescription, siteUrl } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -44,9 +45,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <CartProvider>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </CartProvider>
         <RevealObserver />
       </body>
     </html>

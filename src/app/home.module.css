@@ -53,39 +53,62 @@
   margin-top: 36px;
 }
 
-.heroVisual {
-  grid-column: 6 / -1;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  min-height: 480px;
-  margin-right: calc(var(--gutter) * -0.5);
+.heroShop {
+  grid-column: 7 / -1;
+  align-self: center;
+  min-width: 0;
 }
-.heroVisual > div:first-child {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.heroVisual > div:first-child > div {
-  flex: 1;
-}
-.heroVisualNote {
+.heroShopHead {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 22px;
-  justify-content: flex-end;
-  padding: 10px 0 0;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--steel-500);
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--ink-3);
 }
-.heroVisualNote a {
+.heroShopTitle {
+  font-family: var(--font-mono);
+  font-stretch: 100%;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--steel-300);
 }
-.heroVisualNote a:hover {
+.heroShopAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--white);
+  text-decoration: none;
+}
+.heroShopAll:hover {
+  color: var(--accent);
+}
+.heroShopAll svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+.heroShopGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.heroShopGrid > li {
+  display: flex;
+}
+.heroShopGrid > li > * {
+  flex: 1;
 }
 
 /* Category index strip */
@@ -145,11 +168,9 @@
   .heroTitle {
     max-width: 16ch;
   }
-  .heroVisual {
+  .heroShop {
     grid-column: 1 / -1;
-    margin-right: 0;
-    height: min(72vw, 560px);
-    min-height: 360px;
+    margin-top: 24px;
   }
   .heroGrid {
     min-height: 0;
@@ -169,15 +190,8 @@
   }
 }
 @media (max-width: 640px) {
-  .heroVisual {
-    height: 100vw;
-    min-height: 0;
-  }
-  .heroVisual :global([role='application']) {
-    min-height: 0;
-  }
-  .heroVisualNote {
-    display: none;
+  .heroShopGrid {
+    grid-template-columns: 1fr;
   }
   .heroActions :global(.btn) {
     flex: 1 1 100%;
@@ -306,87 +320,6 @@
   .rangeCell {
     grid-template-columns: 1fr;
   }
-}
-
-/* ---------- Applications matrix ---------- */
-.matrixWrap {
-  border-top: 1px solid var(--ink);
-}
-.scrollHint {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel-700);
-  margin-bottom: 10px;
-}
-@media (max-width: 760px) {
-  .scrollHint {
-    display: block;
-  }
-}
-.matrix {
-  width: 100%;
-  min-width: 720px;
-  border-collapse: collapse;
-  font-size: 0.9375rem;
-}
-.matrix th,
-.matrix td {
-  padding: 13px 12px;
-  border-bottom: 1px solid var(--line-strong);
-  text-align: center;
-}
-.matrix thead th {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel-700);
-  padding-top: 16px;
-  vertical-align: bottom;
-}
-.matrix thead th a {
-  text-decoration: none;
-}
-.matrix thead th a:hover {
-  color: var(--ink);
-  text-decoration: underline;
-}
-.matrix thead th:first-child,
-.matrix tbody th {
-  text-align: left;
-  padding-left: 0;
-}
-.matrix tbody th {
-  font-weight: 500;
-  width: 28%;
-}
-.matrix tbody tr:not(.matrixSector):hover {
-  background: rgba(255, 255, 255, 0.55);
-}
-.matrixSector th {
-  padding-top: 26px;
-  font-family: var(--font-display);
-  font-stretch: 88%;
-  font-size: 1.125rem;
-  font-weight: 620;
-  border-bottom-color: var(--ink);
-}
-.matrixSector a {
-  text-decoration: none;
-}
-.matrixSector a:hover {
-  text-decoration: underline;
-}
-.mark {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: var(--ink);
-  transform: rotate(45deg);
 }
 
 /* ---------- Selection ---------- */
