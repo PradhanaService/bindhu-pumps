@@ -44,7 +44,8 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
     <>
       <PageHero
         label={`Category ${p.index}`}
-        title={p.name}
+        accent={p.name.split(' ')[0]}
+        title={p.name.split(' ').slice(1).join(' ')}
         lead={p.summary}
         crumbs={[{ href: '/products', label: 'Products' }, { label: p.name }]}
         aside={

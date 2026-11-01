@@ -35,12 +35,12 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ---------- Hero ---------- */}
-      <section className={`${s.hero} on-dark`} aria-labelledby="hero-title">
+      <section className={s.hero} aria-labelledby="hero-title">
         <div className={`container ${s.heroGrid}`}>
           <div className={s.heroCopy}>
             <p className="label">Water pump engineering, sales and service</p>
             <h1 id="hero-title" className={s.heroTitle}>
-              Pumps for borewells, open wells, farms and buildings.
+              <span className="hl">Pumps for borewells,</span> open wells, farms and buildings.
             </h1>
             <p className={s.heroLead}>
               We supply and service submersible, borewell, openwell, agricultural and monoblock pumps. Each pump is selected from the water source, depth, distance and power supply on
@@ -55,11 +55,13 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className={s.heroShop} aria-labelledby="hero-shop-title">
-            <div className={s.heroShopHead}>
+          <div className={`notch on-dark ${s.heroShop}`} aria-labelledby="hero-shop-title">
+            <div className={`notch__tab ${s.heroShopTab}`}>
               <h2 id="hero-shop-title" className={s.heroShopTitle}>
-                Products for sale
+                Products <span className="hl">for sale</span>
               </h2>
+            </div>
+            <div className={s.heroShopHead}>
               <Link href="/shop" className={s.heroShopAll}>
                 View all {catalogue.length} products <ArrowRight />
               </Link>
@@ -96,7 +98,9 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <p className="label">Product range</p>
-            <h2 id="range-title">Five categories, defined by where the pump sits and what it draws from.</h2>
+            <h2 id="range-title">
+              <span className="hl">Five categories,</span> defined by where the pump sits and what it draws from.
+            </h2>
             <p className="section-intro">
               A pump that suits a borewell will not suit a canal bank. The range is organised by installation, so the right category is clear before power and head are discussed.
             </p>
@@ -147,7 +151,9 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <p className="label">Interactive 3D model</p>
-            <h2 id="explorer-title">How a compact submersible pump is put together.</h2>
+            <h2 id="explorer-title">
+              <span className="hl">How a compact submersible pump</span> is put together.
+            </h2>
             <p className="section-intro">
               Built from supplied engineering CAD, not an illustration. Rotate the model, separate its bodies, cut a section and select each component for an explanation. This is a
               representative reference model, not a catalogue item.
@@ -162,7 +168,9 @@ export default function HomePage() {
         <div className={`container ${s.select}`}>
           <div className={s.selectHead}>
             <p className="label">Pump selection</p>
-            <h2 id="select-title">Six facts decide the right pump.</h2>
+            <h2 id="select-title" className="title-caps">
+              <span className="hl">Six facts</span> decide the right pump.
+            </h2>
             <p className="lead">
               Power rating alone does not describe a pump duty. Bring these details to an enquiry and the recommendation can be made against the actual installation.
             </p>
@@ -188,8 +196,8 @@ export default function HomePage() {
         <div className={`container ${s.service}`}>
           <div>
             <p className="label">Service and support</p>
-            <h2 id="service-title" className={s.serviceTitle}>
-              Support continues after the pump is installed.
+            <h2 id="service-title" className={`title-caps ${s.serviceTitle}`}>
+              <span className="hl">Support continues</span> after the pump is installed.
             </h2>
             <Link href="/service" className="btn btn--dark" style={{ marginTop: 32 }}>
               Service and support <ArrowRight />

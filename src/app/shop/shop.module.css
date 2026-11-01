@@ -42,7 +42,7 @@
   border-color: var(--ink);
 }
 .filters a span {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   color: var(--steel-500);
 }
@@ -81,4 +81,34 @@
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Redesign ---------- */
+.bar {
+  border-bottom: 0;
+  padding: 14px 14px 14px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--card);
+}
+.count {
+  text-transform: uppercase;
+  font-size: 1.125rem;
+}
+.filters a {
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-weight: 600;
+}
+.filters a:hover {
+  background: var(--sky-100);
+}
+.filters a[aria-current='page'] {
+  background: var(--accent-ink);
+}
+.filters a[aria-current='page'] span {
+  color: rgba(255, 255, 255, 0.8);
+}
+.grid {
+  gap: 14px;
 }

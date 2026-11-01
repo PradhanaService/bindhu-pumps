@@ -22,7 +22,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
     <>
       <PageHero
         label="Contact"
-        title="Request a quote or technical advice."
+        accent="Request a quote" title="or technical advice."
         lead="Tell us about the water source, the installation and what the pump needs to deliver. An engineer will review the details and respond."
         crumbs={[{ label: 'Contact' }]}
       />

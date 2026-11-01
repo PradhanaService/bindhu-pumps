@@ -29,7 +29,7 @@ export default function ProductsPage() {
     <>
       <PageHero
         label="Product range"
-        title="Water pumps by installation and water source."
+        accent="Water pumps" title="by installation and water source."
         lead="Five categories cover borewells, open wells, sumps, tanks, canals and surface installations. Compare them below, then open a category for its construction, specifications and applications."
         crumbs={[{ label: 'Products' }]}
       />

@@ -11,7 +11,7 @@
   font-size: 0.9375rem;
 }
 .quick dt {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -224,7 +224,7 @@
   color: var(--accent);
 }
 .appSector {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -259,7 +259,7 @@
 }
 .inputs li::marker {
   color: var(--accent);
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.8em;
 }
 .inputs p {
@@ -316,14 +316,13 @@
   margin-bottom: 12px;
 }
 .relNo {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   color: var(--accent-ink);
   padding-top: 4px;
 }
 .relName {
   font-family: var(--font-display);
-  font-stretch: 88%;
   font-weight: 620;
   font-size: 1.375rem;
 }
@@ -388,4 +387,152 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+/* ---------- Redesign: rounded tiles, pills and glass ---------- */
+.quick {
+  border: 0;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+.quick div:last-child {
+  border-bottom: 0;
+}
+.local {
+  top: var(--header-h);
+  margin: 12px var(--inset) 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 245, 248, 0.92);
+  backdrop-filter: blur(10px);
+}
+.local :global(.container) {
+  min-height: 56px;
+  padding-inline: 10px;
+}
+.local a:not(:global(.btn)) {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+.local li:first-child a {
+  padding-left: 16px;
+}
+.local a:not(:global(.btn)):hover {
+  background: var(--white);
+}
+.overviewText h2 {
+  text-transform: uppercase;
+}
+.overviewFig {
+  padding: clamp(20px, 3vw, 36px);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #f4f9fd 0%, var(--sky-100) 100%);
+}
+.specsSide h2 {
+  text-transform: uppercase;
+}
+.docs li a {
+  border: 0;
+  padding: 12px 16px;
+  margin-top: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+.featureGrid {
+  border-top: 0;
+  gap: 12px;
+}
+.featureGrid div,
+.featureGrid div + div {
+  padding: 22px 24px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.featureGrid div:nth-child(n + 3),
+.featureGrid div:nth-child(3) {
+  border: 0;
+  padding-left: 24px;
+}
+.subhead {
+  text-transform: uppercase;
+}
+.appsTitle {
+  text-transform: uppercase;
+}
+.appList {
+  border-top: 0;
+  display: grid;
+  gap: 8px;
+}
+.appList li {
+  border-bottom: 0;
+}
+.appList a {
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.09);
+}
+.appList a:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.appList a:hover .appName {
+  color: var(--sky);
+}
+.inputs {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--ink);
+}
+.inputs li::marker {
+  color: var(--sky);
+}
+.related {
+  border-top: 0;
+  gap: 12px;
+}
+.related li + li {
+  border: 0;
+}
+.related a,
+.related li:first-child a {
+  padding: 22px 24px 26px;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.related a:hover {
+  background: var(--sky-100);
+}
+.relFig {
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.relName {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+}
+.relNo {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 24px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  align-self: center;
+}
+.enqContact {
+  border-top: 0;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.enqTitle {
+  text-transform: uppercase;
 }

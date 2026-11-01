@@ -132,7 +132,6 @@
 .totals dd {
   margin: 0;
   font-family: var(--font-display);
-  font-stretch: 88%;
   font-weight: 650;
   font-size: 1.5rem;
 }
@@ -225,4 +224,67 @@
   .form {
     padding: 20px;
   }
+}
+
+/* ---------- Redesign ---------- */
+.title {
+  text-transform: uppercase;
+}
+.empty,
+.success {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.success {
+  border-left: 0;
+  background: #eaf6ef;
+}
+.lines {
+  border-top: 0;
+  display: grid;
+  gap: 10px;
+}
+.line {
+  padding: 14px;
+  border-bottom: 0;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.lineImg {
+  border: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.qty {
+  border: 0;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.qty span {
+  border: 0;
+  font-weight: 700;
+}
+.totals div {
+  margin-top: 12px;
+  padding: 18px 22px;
+  border-bottom: 0;
+  border-radius: var(--radius);
+  background: var(--sky-100);
+}
+.totals dd {
+  color: var(--accent-ink);
+}
+.form {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.formTitle {
+  text-transform: uppercase;
+}
+.error {
+  border-left: 0;
+  border-radius: var(--radius-sm);
 }

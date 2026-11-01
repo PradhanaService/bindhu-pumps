@@ -49,10 +49,34 @@
   background: var(--ink-3);
 }
 .thumb3dSub {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-weight: 400;
   font-size: 9.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--steel-300);
+}
+
+/* ---------- Redesign ---------- */
+.main {
+  border: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.main > * {
+  border-radius: 0;
+}
+.thumb {
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--card);
+}
+.thumb[aria-pressed='true'] {
+  border-color: var(--accent);
+  box-shadow: none;
+}
+.thumb3d {
+  background: var(--grad-deep);
+  border-color: transparent;
 }

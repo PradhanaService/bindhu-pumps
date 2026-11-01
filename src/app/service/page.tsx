@@ -25,7 +25,7 @@ export default function ServicePage() {
     <>
       <PageHero
         label="Service and support"
-        title="Service, maintenance and technical support for installed pumps."
+        accent="Service, maintenance" title="and technical support for installed pumps."
         lead="Pumps last longer and use less energy when they are looked after. Support covers advice before purchase, warranty claims, repairs, scheduled maintenance under AMC plans and engineering assistance."
         crumbs={[{ label: 'Service and support' }]}
         aside={

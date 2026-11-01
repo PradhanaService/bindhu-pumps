@@ -1,100 +1,107 @@
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  background-color: var(--ink);
-  color: var(--white);
-  /* Measurement grid, aligned to the visual: reads as a drawing sheet, not decoration. */
-  background-image: linear-gradient(to right, rgba(122, 150, 180, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(122, 150, 180, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: center top;
-  overflow: hidden;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 70% 45%, rgba(13, 24, 36, 0) 0%, rgba(13, 24, 36, 0.85) 100%);
-  pointer-events: none;
+  background: var(--paper);
+  padding-top: clamp(28px, 4vw, 56px);
 }
 
 .heroGrid {
-  position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 24px;
-  align-items: center;
-  min-height: min(calc(100svh - var(--header-h) - 92px), 760px);
-  padding-block: clamp(40px, 5vw, 64px) 24px;
+  align-items: stretch;
 }
 
 .heroCopy {
   grid-column: 1 / span 5;
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 16px;
 }
 .heroTitle {
   font-size: var(--fs-display);
-  margin-top: 22px;
-  max-width: 13ch;
+  margin-top: 20px;
+  line-height: 1.06;
 }
 .heroLead {
-  margin-top: 24px;
+  margin-top: 22px;
   font-size: var(--fs-lead);
-  line-height: 1.6;
-  color: var(--steel-300);
-  max-width: 50ch;
+  line-height: 1.65;
+  color: var(--steel-700);
+  max-width: 48ch;
 }
 .heroActions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 32px;
 }
 
+/* Product panel: deep-blue notched panel with frosted product cards */
 .heroShop {
-  grid-column: 7 / -1;
-  align-self: center;
+  grid-column: 6 / -1;
   min-width: 0;
+  background: var(--grad-deep);
+  color: var(--white);
+  padding: 76px clamp(16px, 2vw, 28px) clamp(16px, 2vw, 28px);
+  align-self: center;
 }
-.heroShopHead {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 8px 24px;
-  padding-bottom: 14px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--ink-3);
+.heroShop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 60% 55% at 90% 0%, rgba(140, 198, 234, 0.5), transparent 70%);
+  pointer-events: none;
+}
+.heroShop > * {
+  position: relative;
+  z-index: 1;
+}
+.heroShop > .heroShopTab {
+  position: absolute;
+  z-index: 3;
 }
 .heroShopTitle {
-  font-family: var(--font-mono);
-  font-stretch: 100%;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.75rem);
   text-transform: uppercase;
-  color: var(--steel-300);
+  color: var(--ink);
+  padding-top: 2px;
+}
+.heroShopTitle :global(.hl) {
+  color: var(--accent);
+}
+.heroShopHead {
+  position: absolute !important;
+  top: 22px;
+  right: clamp(16px, 2vw, 28px);
 }
 .heroShopAll {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
   color: var(--white);
   text-decoration: none;
+  backdrop-filter: blur(8px);
 }
 .heroShopAll:hover {
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.26);
 }
 .heroShopAll svg {
   width: 12px;
   height: 12px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.7;
+  stroke-width: 1.8;
 }
 .heroShopGrid {
   list-style: none;
@@ -111,12 +118,9 @@
   flex: 1;
 }
 
-/* Category index strip */
+/* Category tiles under the hero */
 .index {
-  position: relative;
-  z-index: 1;
-  border-top: 1px solid var(--ink-3);
-  background: rgba(13, 24, 36, 0.7);
+  padding-top: 16px;
 }
 .indexList {
   list-style: none;
@@ -124,96 +128,93 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-.indexList li + li {
-  border-left: 1px solid var(--ink-3);
+  gap: 12px;
 }
 .indexList a {
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: center;
   column-gap: 12px;
   row-gap: 2px;
-  padding: 20px 20px 22px;
-  text-decoration: none;
-  color: var(--white);
-  transition: background-color 0.18s var(--ease);
   height: 100%;
-}
-.indexList li:first-child a {
-  padding-left: 0;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--card);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background-color 0.18s var(--ease);
 }
 .indexList a:hover {
-  background: var(--ink-2);
+  background: var(--sky-100);
 }
 .indexNo {
   grid-row: 1 / span 2;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--accent);
-  padding-top: 3px;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--accent-ink);
 }
 .indexName {
-  font-weight: 500;
-  font-size: 0.9375rem;
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 0.875rem;
 }
 .indexPos {
   font-size: 0.8125rem;
-  color: var(--steel-300);
+  color: var(--steel-700);
 }
 
 @media (max-width: 1100px) {
-  .heroCopy {
+  .heroCopy,
+  .heroShop {
     grid-column: 1 / -1;
   }
   .heroTitle {
-    max-width: 16ch;
-  }
-  .heroShop {
-    grid-column: 1 / -1;
-    margin-top: 24px;
-  }
-  .heroGrid {
-    min-height: 0;
+    max-width: 18ch;
   }
   .indexList {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .indexList li + li {
-    border-left: 0;
-  }
-  .indexList li {
-    border-bottom: 1px solid var(--ink-3);
-  }
-  .indexList li:first-child a,
-  .indexList a {
-    padding-left: 0;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   }
 }
 @media (max-width: 640px) {
   .heroShopGrid {
     grid-template-columns: 1fr;
   }
+  .heroShop {
+    padding-top: 120px;
+  }
+  .heroShopHead {
+    top: 70px;
+    left: clamp(16px, 2vw, 28px);
+    right: auto;
+  }
   .heroActions :global(.btn) {
     flex: 1 1 100%;
   }
 }
 
-/* ---------- Product range index ---------- */
+/* ---------- Product range: rows as soft tiles ---------- */
 .rangeHead,
 .rangeLink {
   display: grid;
-  grid-template-columns: 56px minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 0.8fr) 168px;
+  grid-template-columns: 64px minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 0.8fr) 168px;
   column-gap: 24px;
   align-items: center;
 }
 .rangeHead {
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--ink);
-  font-family: var(--font-mono);
+  padding: 0 24px 12px;
+  font-family: var(--font-label);
   font-size: var(--fs-label);
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--steel-700);
+  color: var(--steel-500);
 }
 .rangeHead span:first-child {
   grid-column: 1 / span 2;
@@ -222,30 +223,35 @@
   list-style: none;
   margin: 0;
   padding: 0;
-}
-.rangeRow {
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
 }
 .rangeLink {
-  padding: 22px 0;
+  padding: 18px 24px;
+  border-radius: var(--radius);
+  background: var(--card);
   text-decoration: none;
   color: inherit;
-  position: relative;
   transition: background-color 0.18s var(--ease);
 }
 .rangeLink:hover {
-  background: var(--white);
+  background: var(--sky-100);
 }
 .rangeLink:hover .rangeName {
   color: var(--accent-ink);
 }
 .rangeNo {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8125rem;
   color: var(--accent-ink);
-  align-self: start;
-  padding-top: 8px;
-  padding-left: 4px;
+  align-self: center;
 }
 .rangeMain {
   display: flex;
@@ -254,11 +260,11 @@
 }
 .rangeName {
   font-family: var(--font-display);
-  font-stretch: 88%;
-  font-weight: 620;
-  font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.875rem);
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
   transition: color 0.18s;
 }
 .rangeSum {
@@ -268,13 +274,17 @@
 }
 .rangeCell {
   font-size: 0.9375rem;
+  font-weight: 500;
 }
 .rangeFig {
   width: 168px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
   color: var(--ink);
 }
 .rangeFoot {
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 @media (max-width: 1000px) {
@@ -282,8 +292,11 @@
     display: none;
   }
   .rangeLink {
-    grid-template-columns: 40px minmax(0, 1fr) 120px;
+    grid-template-columns: 52px minmax(0, 1fr) 120px;
     row-gap: 10px;
+  }
+  .rangeNo {
+    align-self: start;
   }
   .rangeMain {
     grid-column: 2;
@@ -302,9 +315,10 @@
   }
   .rangeCell::before {
     content: attr(data-label);
-    font-family: var(--font-mono);
+    font-family: var(--font-label);
     font-size: 0.6875rem;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--steel-500);
     padding-top: 2px;
@@ -312,7 +326,8 @@
 }
 @media (max-width: 560px) {
   .rangeLink {
-    grid-template-columns: 32px minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, 1fr);
+    padding: 18px;
   }
   .rangeFig {
     display: none;
@@ -326,7 +341,7 @@
 .select {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 64px;
+  gap: 56px;
   align-items: start;
 }
 .selectHead {
@@ -338,84 +353,93 @@
   margin: 18px 0 20px;
 }
 .selectHead :global(.btn) {
-  margin-top: 32px;
+  margin-top: 30px;
 }
 @media (max-width: 1000px) {
   .select {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .selectHead {
     position: static;
   }
 }
 
-/* ---------- Service ---------- */
+/* ---------- Service: charcoal card list beside the title ---------- */
 .serviceSection {
-  background: var(--white);
-  border-top: 1px solid var(--line);
+  background: var(--paper);
 }
 .service {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 64px;
+  gap: 56px;
+  align-items: start;
 }
 .serviceTitle {
   font-size: var(--fs-h2);
   margin-top: 18px;
-  max-width: 14ch;
+  max-width: 16ch;
 }
 .serviceList {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--ink);
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  background: var(--ink);
 }
-.serviceList li {
-  border-bottom: 1px solid var(--line);
+.serviceList li + li {
+  margin-top: 4px;
 }
 .serviceList a {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 36px;
   gap: 24px;
-  align-items: baseline;
-  padding: 22px 0;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--radius);
   text-decoration: none;
-  color: var(--ink);
+  color: var(--white);
+  transition: background-color 0.18s var(--ease);
+}
+.serviceList a:hover {
+  background: rgba(255, 255, 255, 0.07);
 }
 .serviceList a svg {
-  width: 14px;
-  height: 14px;
+  width: 36px;
+  height: 36px;
+  padding: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.6;
-  transition: transform 0.18s var(--ease);
-  align-self: center;
+  stroke-width: 1.8;
+  transition: transform 0.18s var(--ease), background-color 0.18s;
 }
 .serviceList a:hover svg {
-  transform: translateX(4px);
+  background: var(--sky);
+  border-color: var(--sky);
+  color: var(--ink);
 }
 .serviceList a:hover .serviceName {
-  color: var(--accent-ink);
+  color: var(--sky);
 }
 .serviceName {
   font-family: var(--font-display);
-  font-stretch: 88%;
-  font-weight: 600;
-  font-size: 1.375rem;
+  font-weight: 650;
+  font-size: 1.125rem;
   transition: color 0.18s;
 }
 .serviceSum {
-  color: var(--steel-700);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.9375rem;
 }
 @media (max-width: 900px) {
   .service {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .serviceList a {
-    grid-template-columns: minmax(0, 1fr) 20px;
+    grid-template-columns: minmax(0, 1fr) 36px;
   }
   .serviceSum {
     grid-column: 1;

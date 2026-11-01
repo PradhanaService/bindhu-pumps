@@ -47,7 +47,7 @@ export default function CompanyPage() {
     <>
       <PageHero
         label="Company"
-        title="A water pump engineering, sales and service business."
+        accent="A water pump engineering," title="sales and service business."
         lead="We supply submersible, borewell, openwell, agricultural and monoblock pumps and support them after installation. The work is practical: understand the site, select the right pump, and keep it running."
         crumbs={[{ label: 'Company' }]}
       />

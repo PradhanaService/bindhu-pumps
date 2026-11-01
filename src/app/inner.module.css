@@ -22,7 +22,7 @@
   color: var(--accent);
 }
 .jump span {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   color: var(--accent);
   padding-top: 2px;
@@ -72,7 +72,7 @@
   grid-row: 1 / span 3;
 }
 .appCatsLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -204,7 +204,7 @@
   align-items: baseline;
 }
 .capNo {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   color: var(--accent);
 }
@@ -239,7 +239,7 @@
   scroll-margin-top: calc(var(--header-h) + 24px);
 }
 .serviceNo {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   color: var(--accent-ink);
   padding-top: 8px;
@@ -256,7 +256,7 @@
   color: var(--steel-700);
 }
 .servicePending p {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -307,7 +307,7 @@
 }
 .checklist li::before {
   content: counter(c, decimal-leading-zero);
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   color: var(--accent-ink);
   padding-top: 3px;
@@ -367,4 +367,154 @@
 }
 .legalStatus {
   margin-bottom: 40px;
+}
+
+/* ---------- Redesign: rounded tiles, pills and glass ---------- */
+.jump {
+  border-top: 0;
+  display: grid;
+  gap: 8px;
+}
+.jump li {
+  border-bottom: 0;
+}
+.jump a {
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+.jump a:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.22);
+}
+.jump span {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 22px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--sky);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.sectorHead h2,
+.split h2,
+.formHead h2 {
+  text-transform: uppercase;
+}
+.appRows {
+  border-top: 0;
+  display: grid;
+  gap: 12px;
+}
+.appRow {
+  padding: 26px 28px;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+:global(.section--paper2) .appRow {
+  background: var(--white);
+}
+.appCats li {
+  border-top: 0;
+  padding: 10px 14px;
+  margin-top: 6px;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+:global(.section--paper2) .appCats li {
+  background: var(--card);
+}
+.appCats li a {
+  border-bottom: 0;
+  color: var(--accent-ink);
+}
+.appCats li a:hover {
+  text-decoration: underline;
+}
+.appNote {
+  border-left: 0;
+  border-radius: var(--radius-sm);
+  background: var(--sky-100);
+}
+.appEnquire {
+  color: var(--accent-ink);
+}
+.facts {
+  border-top: 0;
+  padding: 8px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+}
+.facts div:last-child {
+  border-bottom: 0;
+}
+.caps {
+  border-top: 0;
+  display: grid;
+  gap: 10px;
+}
+.cap {
+  padding: 24px 28px;
+  border-bottom: 0;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.09);
+}
+.capNo {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--sky);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.services {
+  border-top: 0;
+  display: grid;
+  gap: 12px;
+}
+.serviceRow {
+  padding: 28px;
+  border-bottom: 0;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.serviceNo {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 28px;
+  padding-top: 0;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.checklist {
+  border-top: 0;
+  display: grid;
+  gap: 6px;
+}
+.checklist li {
+  padding: 12px 16px;
+  border-bottom: 0;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+.contactSide :global(.contact-list) {
+  border-top: 0;
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.legal :global(.prose) {
+  color: var(--ink);
 }

@@ -36,7 +36,7 @@ export type PumpSceneProps = {
 const CAP_COLOR: Record<string, string> = { housing: '#8fa6ba', polymer: '#6d7177', rubber: '#55585c', steel: '#d9dde0' };
 
 const materialSpec: Record<string, THREE.MeshPhysicalMaterialParameters> = {
-  housing: { color: '#41586b', roughness: 0.42, metalness: 0.05, clearcoat: 0.35, clearcoatRoughness: 0.35 },
+  housing: { color: '#a9d2ee', roughness: 0.38, metalness: 0.05, clearcoat: 0.4, clearcoatRoughness: 0.3 },
   polymer: { color: '#1d1f22', roughness: 0.58, metalness: 0 },
   rubber: { color: '#141516', roughness: 0.78, metalness: 0 },
   steel: { color: '#cfd4d8', roughness: 0.26, metalness: 1 },
@@ -49,7 +49,7 @@ export default function PumpScene(props: PumpSceneProps) {
       frameloop={running ? 'always' : 'never'}
       dpr={[1, 1.75]}
       camera={{ position: views.iso.position, fov: 32, near: 0.1, far: 60 }}
-      gl={{ antialias: true, localClippingEnabled: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: true, alpha: true, localClippingEnabled: true, powerPreference: 'high-performance' }}
       onCreated={({ gl }) => {
         gl.toneMapping = THREE.ACESFilmicToneMapping;
         gl.toneMappingExposure = 1.05;
@@ -144,8 +144,6 @@ function Stage(props: PumpSceneProps) {
 
   return (
     <>
-      <color attach="background" args={['#0f1823']} />
-      <fog attach="fog" args={['#0f1823', 9, 22]} />
       <ambientLight intensity={0.25} />
       <directionalLight position={[-4, 6, 4]} intensity={1.6} />
       <directionalLight position={[5, 2, -3]} intensity={0.6} color="#b9c9da" />
@@ -156,8 +154,8 @@ function Stage(props: PumpSceneProps) {
         <Lightformer form="rect" intensity={0.5} color="#e8a26c" position={[0, 1, -6]} scale={[6, 2, 1]} />
       </Environment>
       <Model {...props} onReady={onReady} />
-      <ContactShadows key={mode} position={[0, -0.002, -0.6]} opacity={0.55} scale={7} blur={2.4} far={2} frames={1} resolution={512} color="#000000" />
-      <gridHelper args={[12, 24, '#22344a', '#182634']} position={[0, -0.004, -0.6]} />
+      <ContactShadows key={mode} position={[0, -0.002, -0.6]} opacity={0.45} scale={7} blur={2.4} far={2} frames={1} resolution={512} color="#05213b" />
+      <gridHelper args={[12, 24, '#5d9bd0', '#3f7fb8']} position={[0, -0.004, -0.6]} />
       <OrbitControls
         ref={controls}
         makeDefault

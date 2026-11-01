@@ -59,7 +59,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        <Wordmark onDark />
+        <Wordmark />
 
         <nav className="site-nav" aria-label="Primary">
           <ul>

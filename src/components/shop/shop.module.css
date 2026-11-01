@@ -3,6 +3,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   background: var(--white);
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 .photoImg {
@@ -12,69 +13,64 @@
 .placeholder {
   display: grid;
   place-items: center;
-  background-color: var(--white);
-  background-image: linear-gradient(to right, rgba(13, 24, 36, 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(13, 24, 36, 0.045) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background: linear-gradient(160deg, #f4f9fd 0%, var(--sky-100) 100%);
 }
 .placeholderDark {
-  background-color: #16273a;
-  background-image: linear-gradient(to right, rgba(122, 150, 180, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(122, 150, 180, 0.08) 1px, transparent 1px);
+  background: rgba(255, 255, 255, 0.9);
 }
 .placeholderArt {
   width: 62%;
-  opacity: 0.9;
 }
 .placeholderNote {
   position: absolute;
-  left: 10px;
-  bottom: 8px;
-  font-family: var(--font-mono);
+  left: 12px;
+  bottom: 10px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-label);
   font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel-500);
-}
-.placeholderDark .placeholderNote {
-  color: var(--steel-300);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--steel-700);
 }
 
 /* ---------- Product card ---------- */
 .card {
-  border: 1px solid var(--line);
-  background: var(--white);
-  transition: border-color 0.18s var(--ease);
+  border-radius: var(--radius);
+  background: var(--card);
+  transition: background-color 0.18s var(--ease), transform 0.18s var(--ease);
   min-width: 0;
 }
 .card:hover {
-  border-color: var(--ink);
+  background: var(--sky-100);
 }
 .cardLink {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 8px;
   text-decoration: none;
   color: inherit;
-}
-.cardLink .photo {
-  border-bottom: 1px solid var(--line);
 }
 .cardBody {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 14px 16px 16px;
+  padding: 14px 10px 10px;
   flex: 1;
 }
 .cardCat {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 10.5px;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent-ink);
 }
 .cardName {
-  font-size: 1.0625rem;
-  line-height: 1.25;
+  font-size: 1rem;
+  line-height: 1.3;
 }
 .cardTag {
   font-size: 0.8125rem;
@@ -88,55 +84,54 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 6px 10px;
-  font-weight: 600;
-  font-size: 1.0625rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
 }
 .cardPrice :global(.pending) {
-  font-weight: 400;
-  font-size: 0.6875rem;
-  padding: 1px 6px;
+  font-size: 0.625rem;
+  padding: 1px 8px;
 }
 
+/* Frosted glass, for cards on blue panels */
 .cardDark {
-  background: var(--ink-2);
-  border-color: var(--ink-3);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--white);
 }
 .cardDark:hover {
-  border-color: var(--steel-500);
-}
-.cardDark .cardLink .photo {
-  border-bottom-color: var(--ink-3);
+  background: rgba(255, 255, 255, 0.2);
 }
 .cardDark .cardCat {
-  color: var(--accent);
+  color: var(--sky);
 }
 .cardDark .cardTag {
-  color: var(--steel-300);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* Row layout: image beside text, for compact lists */
 .cardRow .cardLink {
   flex-direction: row;
+  gap: 4px;
 }
 .cardRow .cardLink .photo {
-  flex: 0 0 42%;
+  flex: 0 0 40%;
   aspect-ratio: auto;
-  min-height: 150px;
-  border-bottom: 0;
-  border-right: 1px solid var(--line);
-}
-.cardRow.cardDark .cardLink .photo {
-  border-right-color: var(--ink-3);
+  min-height: 140px;
 }
 .cardRow .placeholderArt {
-  width: 78%;
+  width: 80%;
 }
 .cardRow .placeholderNote {
   display: none;
 }
+.cardRow .cardBody {
+  padding: 8px 8px 6px 12px;
+}
 .cardRow .cardName {
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 /* ---------- Add to cart ---------- */
@@ -148,9 +143,10 @@
 }
 .qty {
   display: inline-flex;
-  border: 1px solid var(--line-strong);
-  background: var(--white);
+  border-radius: var(--radius-pill);
+  background: var(--card);
   height: 48px;
+  overflow: hidden;
 }
 .qty button {
   width: 44px;
@@ -160,17 +156,16 @@
   cursor: pointer;
 }
 .qty button:hover:not(:disabled) {
-  background: var(--paper-2);
+  background: var(--sky-200);
 }
 .qty button:disabled {
   color: var(--steel-500);
   cursor: default;
 }
 .qty input {
-  width: 52px;
+  width: 44px;
   border: 0;
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
+  font-weight: 700;
   text-align: center;
   background: transparent;
   font-variant-numeric: tabular-nums;

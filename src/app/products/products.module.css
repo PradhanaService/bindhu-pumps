@@ -35,7 +35,7 @@
 }
 .colNo {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   font-weight: 500;
   color: var(--accent-ink);
@@ -43,7 +43,7 @@
 }
 .compare tbody th {
   width: 14%;
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -94,7 +94,7 @@
   border-top: 1px solid var(--line);
 }
 .catApps dt {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -130,4 +130,48 @@
     grid-column: 1 / -1;
     grid-row: auto;
   }
+}
+
+/* ---------- Redesign: rounded tiles and pills ---------- */
+.compare thead th {
+  border-bottom: 1.5px solid var(--sky-300);
+}
+.colNo {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.cat {
+  border-top: 0;
+  padding-block: clamp(20px, 3vw, 40px);
+}
+.catFig {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #f4f9fd 0%, var(--sky-100) 100%);
+}
+.catBody h2 {
+  text-transform: uppercase;
+}
+.catApps {
+  border-top: 0;
+  padding-top: 0;
+}
+.catApps a {
+  border: 0;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--sky-100);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.catApps a:hover {
+  background: var(--sky-200);
 }

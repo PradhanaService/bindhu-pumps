@@ -10,7 +10,7 @@ export function CtaBand({
   body?: string;
 }) {
   return (
-    <section className="cta-band on-dark" aria-labelledby="cta-title">
+    <section className="cta-band" aria-labelledby="cta-title">
       <div className="container cta-band__grid">
         <div>
           <p className="label">Enquiries</p>

@@ -17,7 +17,7 @@ export default function ApplicationsPage() {
     <>
       <PageHero
         label="Applications"
-        title="Pumps for farms, buildings and industrial sites."
+        accent="Pumps for farms," title="buildings and industrial sites."
         lead="Each application below lists the pump categories usually considered and why. These are starting points: the final recommendation is made against the depth, head, flow and power supply of the actual site."
         crumbs={[{ label: 'Applications' }]}
         aside={

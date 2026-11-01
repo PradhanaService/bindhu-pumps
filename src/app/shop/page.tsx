@@ -23,7 +23,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
     <>
       <PageHero
         label="Shop"
-        title="Pumps for sale."
+        accent="Pumps" title="for sale."
         lead="Browse the range, add pumps to your cart and send an order request. We confirm the final price, delivery and payment with you before anything is dispatched."
         crumbs={[{ label: 'Shop' }]}
       />

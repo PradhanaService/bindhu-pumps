@@ -117,3 +117,22 @@
   background: var(--ink-2);
   border-color: var(--ink-3);
 }
+
+/* ---------- Redesign ---------- */
+.summary {
+  border-left: 0;
+  border-radius: var(--radius-sm);
+}
+.result {
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+.success {
+  border-left: 0;
+  background: #eaf6ef;
+}
+.error {
+  border-left: 0;
+  background: #fdf1ef;
+}
