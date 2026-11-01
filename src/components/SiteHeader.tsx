@@ -10,8 +10,8 @@ import { ArrowRight } from './Icons';
 import { useCart } from './shop/CartProvider';
 
 const links = [
+  { href: '/shop', label: 'Shop' },
   { href: '/applications', label: 'Applications' },
-  { href: '/#explorer', label: '3D Explorer' },
   { href: '/company', label: 'Company' },
   { href: '/service', label: 'Service' },
   { href: '/contact', label: 'Contact' },

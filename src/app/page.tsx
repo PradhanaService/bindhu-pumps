@@ -1,22 +1,35 @@
 import Link from 'next/link';
-import PumpViewer from '@/components/viewer/PumpViewer';
-import { CategorySchematic } from '@/components/schematics/CategorySchematic';
 import { CtaBand } from '@/components/CtaBand';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { catalogue } from '@/content/catalogue';
 import { ArrowRight } from '@/components/Icons';
 import { products } from '@/content/products';
-import { services } from '@/content/services';
 import { brand, siteUrl, siteDescription } from '@/content/site';
 import s from './home.module.css';
 
-const selectionInputs = [
-  { title: 'Water source', body: 'Borewell, open well, sump, tank, canal or pond. This decides the pump type before anything else.' },
-  { title: 'Depth to water', body: 'Static and pumping water level, measured from ground. For surface pumps, the height of the pump above the water.' },
-  { title: 'Delivery point', body: 'Height of the tank or outlet above ground and the pipe distance to it. Together with depth, this sets the total head.' },
-  { title: 'Required flow', body: 'How much water is needed and over what time, or the irrigation method and area to be covered.' },
-  { title: 'Power supply', body: 'Single phase or three phase, and the hours supply is available. This sets the motor and the starter.' },
-  { title: 'Water quality', body: 'Clear, sandy, or carrying solids. This affects the pump construction and materials.' },
+/** Three short reasons to buy, linking to the pages that explain each one. */
+const promises = [
+  {
+    no: '01',
+    title: 'Selected for your site',
+    body: 'Each pump is matched to the water source, depth, distance and power supply it has to work with.',
+    href: '/products',
+    cta: 'Pump categories',
+  },
+  {
+    no: '02',
+    title: 'Order online',
+    body: 'Add pumps to your cart and send an order request. We confirm price, delivery and payment with you.',
+    href: '/shop',
+    cta: 'Browse the shop',
+  },
+  {
+    no: '03',
+    title: 'Serviced after installation',
+    body: 'Maintenance, repairs, AMC plans and technical help once the pump is in the ground.',
+    href: '/service',
+    cta: 'Service and support',
+  },
 ];
 
 const featured = catalogue.filter((i) => i.featured).slice(0, 4);
@@ -93,123 +106,22 @@ export default function HomePage() {
         </nav>
       </section>
 
-      {/* ---------- Product range ---------- */}
-      <section className="section" aria-labelledby="range-title">
+      {/* ---------- Why buy here ---------- */}
+      <section className={`section ${s.promiseSection}`} aria-labelledby="promise-title">
         <div className="container">
-          <div className="section-head">
-            <p className="label">Product range</p>
-            <h2 id="range-title">
-              <span className="hl">Five categories,</span> defined by where the pump sits and what it draws from.
-            </h2>
-            <p className="section-intro">
-              A pump that suits a borewell will not suit a canal bank. The range is organised by installation, so the right category is clear before power and head are discussed.
-            </p>
-          </div>
-
-          <div className={s.rangeHead} aria-hidden="true">
-            <span>Category</span>
-            <span>Installed</span>
-            <span>Water source</span>
-            <span>Priming</span>
-            <span />
-          </div>
-          <ol className={s.range}>
-            {products.map((p) => (
-              <li key={p.slug} className={`${s.rangeRow} reveal`}>
-                <Link href={`/products/${p.slug}`} className={s.rangeLink}>
-                  <span className={s.rangeNo}>{p.index}</span>
-                  <span className={s.rangeMain}>
-                    <span className={s.rangeName}>{p.name}</span>
-                    <span className={s.rangeSum}>{p.summary}</span>
+          <h2 id="promise-title" className="sr-only">
+            Why buy from us
+          </h2>
+          <ul className={s.promises}>
+            {promises.map((p) => (
+              <li key={p.no}>
+                <Link href={p.href} className={s.promise}>
+                  <span className={s.promiseNo}>{p.no}</span>
+                  <span className={s.promiseTitle}>{p.title}</span>
+                  <span className={s.promiseBody}>{p.body}</span>
+                  <span className={s.promiseCta}>
+                    {p.cta} <ArrowRight />
                   </span>
-                  <span className={s.rangeCell} data-label="Installed">
-                    {p.position}
-                  </span>
-                  <span className={s.rangeCell} data-label="Water source">
-                    {p.waterSource}
-                  </span>
-                  <span className={s.rangeCell} data-label="Priming">
-                    {p.priming}
-                  </span>
-                  <span className={s.rangeFig}>
-                    <CategorySchematic kind={p.schematic} title={`${p.name} installation schematic`} compact />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-          <div className={s.rangeFoot}>
-            <Link href="/products" className="link-arrow">
-              Compare categories and specifications <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- 3D explorer ---------- */}
-      <section id="explorer" className="section section--dark" aria-labelledby="explorer-title">
-        <div className="container">
-          <div className="section-head">
-            <p className="label">Interactive 3D model</p>
-            <h2 id="explorer-title">
-              <span className="hl">How a compact submersible pump</span> is put together.
-            </h2>
-            <p className="section-intro">
-              Built from supplied engineering CAD, not an illustration. Rotate the model, separate its bodies, cut a section and select each component for an explanation. This is a
-              representative reference model, not a catalogue item.
-            </p>
-          </div>
-          <PumpViewer variant="full" label="3D pump explorer" />
-        </div>
-      </section>
-
-      {/* ---------- Selection ---------- */}
-      <section className="section" aria-labelledby="select-title">
-        <div className={`container ${s.select}`}>
-          <div className={s.selectHead}>
-            <p className="label">Pump selection</p>
-            <h2 id="select-title" className="title-caps">
-              <span className="hl">Six facts</span> decide the right pump.
-            </h2>
-            <p className="lead">
-              Power rating alone does not describe a pump duty. Bring these details to an enquiry and the recommendation can be made against the actual installation.
-            </p>
-            <Link href="/contact#enquiry" className="btn btn--dark">
-              Start an enquiry <ArrowRight />
-            </Link>
-          </div>
-          <ol className="spec-list">
-            {selectionInputs.map((i) => (
-              <li key={i.title}>
-                <div>
-                  <h3>{i.title}</h3>
-                  <p>{i.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ---------- Service ---------- */}
-      <section className={`section ${s.serviceSection}`} aria-labelledby="service-title">
-        <div className={`container ${s.service}`}>
-          <div>
-            <p className="label">Service and support</p>
-            <h2 id="service-title" className={`title-caps ${s.serviceTitle}`}>
-              <span className="hl">Support continues</span> after the pump is installed.
-            </h2>
-            <Link href="/service" className="btn btn--dark" style={{ marginTop: 32 }}>
-              Service and support <ArrowRight />
-            </Link>
-          </div>
-          <ul className={s.serviceList}>
-            {services.map((sv) => (
-              <li key={sv.id}>
-                <Link href={`/service#${sv.id}`}>
-                  <span className={s.serviceName}>{sv.name}</span>
-                  <span className={s.serviceSum}>{sv.summary}</span>
-                  <ArrowRight />
                 </Link>
               </li>
             ))}

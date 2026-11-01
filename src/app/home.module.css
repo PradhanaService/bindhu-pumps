@@ -199,48 +199,45 @@
   }
 }
 
-/* ---------- Product range: rows as soft tiles ---------- */
-.rangeHead,
-.rangeLink {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 0.8fr) 168px;
-  column-gap: 24px;
-  align-items: center;
+/* ---------- Why buy here: three tiles ---------- */
+.promiseSection {
+  padding-top: clamp(40px, 5vw, 64px);
+  padding-bottom: 0;
 }
-.rangeHead {
-  padding: 0 24px 12px;
-  font-family: var(--font-label);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel-500);
-}
-.rangeHead span:first-child {
-  grid-column: 1 / span 2;
-}
-.range {
+.promises {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
-.rangeLink {
-  padding: 18px 24px;
-  border-radius: var(--radius);
+.promises > li {
+  display: flex;
+}
+.promise {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px;
+  border-radius: var(--radius-lg);
   background: var(--card);
   text-decoration: none;
-  color: inherit;
+  color: var(--ink);
   transition: background-color 0.18s var(--ease);
 }
-.rangeLink:hover {
+.promises > li:nth-child(2) .promise {
+  background: var(--ink);
+  color: var(--white);
+}
+.promise:hover {
   background: var(--sky-100);
 }
-.rangeLink:hover .rangeName {
-  color: var(--accent-ink);
+.promises > li:nth-child(2) .promise:hover {
+  background: #2a333d;
 }
-.rangeNo {
+.promiseNo {
   display: inline-grid;
   place-items: center;
   width: 44px;
@@ -251,201 +248,53 @@
   font-weight: 700;
   font-size: 0.8125rem;
   color: var(--accent-ink);
-  align-self: center;
 }
-.rangeMain {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.promises > li:nth-child(2) .promiseNo {
+  border-color: var(--sky);
+  color: var(--white);
 }
-.rangeName {
+.promiseTitle {
+  margin-top: 8px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-size: 1.25rem;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
-  transition: color 0.18s;
+  line-height: 1.2;
 }
-.rangeSum {
+.promiseBody {
   color: var(--steel-700);
   font-size: 0.9375rem;
-  max-width: 46ch;
 }
-.rangeCell {
-  font-size: 0.9375rem;
-  font-weight: 500;
+.promises > li:nth-child(2) .promiseBody {
+  color: rgba(255, 255, 255, 0.75);
 }
-.rangeFig {
-  width: 168px;
-  padding: 8px;
-  border-radius: var(--radius-sm);
-  background: var(--white);
-  color: var(--ink);
-}
-.rangeFoot {
-  margin-top: 28px;
-}
-
-@media (max-width: 1000px) {
-  .rangeHead {
-    display: none;
-  }
-  .rangeLink {
-    grid-template-columns: 52px minmax(0, 1fr) 120px;
-    row-gap: 10px;
-  }
-  .rangeNo {
-    align-self: start;
-  }
-  .rangeMain {
-    grid-column: 2;
-  }
-  .rangeFig {
-    grid-column: 3;
-    grid-row: 1 / span 4;
-    width: 120px;
-    align-self: start;
-  }
-  .rangeCell {
-    grid-column: 2;
-    font-size: 0.875rem;
-    display: grid;
-    grid-template-columns: 110px 1fr;
-  }
-  .rangeCell::before {
-    content: attr(data-label);
-    font-family: var(--font-label);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--steel-500);
-    padding-top: 2px;
-  }
-}
-@media (max-width: 560px) {
-  .rangeLink {
-    grid-template-columns: 48px minmax(0, 1fr);
-    padding: 18px;
-  }
-  .rangeFig {
-    display: none;
-  }
-  .rangeCell {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ---------- Selection ---------- */
-.select {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 56px;
-  align-items: start;
-}
-.selectHead {
-  position: sticky;
-  top: calc(var(--header-h) + 32px);
-}
-.selectHead h2 {
-  font-size: var(--fs-h2);
-  margin: 18px 0 20px;
-}
-.selectHead :global(.btn) {
-  margin-top: 30px;
-}
-@media (max-width: 1000px) {
-  .select {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .selectHead {
-    position: static;
-  }
-}
-
-/* ---------- Service: charcoal card list beside the title ---------- */
-.serviceSection {
-  background: var(--paper);
-}
-.service {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 56px;
-  align-items: start;
-}
-.serviceTitle {
-  font-size: var(--fs-h2);
-  margin-top: 18px;
-  max-width: 16ch;
-}
-.serviceList {
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-  border-radius: var(--radius-lg);
-  background: var(--ink);
-}
-.serviceList li + li {
-  margin-top: 4px;
-}
-.serviceList a {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 36px;
-  gap: 24px;
+.promiseCta {
+  margin-top: auto;
+  padding-top: 14px;
+  display: inline-flex;
   align-items: center;
-  padding: 18px 20px;
-  border-radius: var(--radius);
-  text-decoration: none;
-  color: var(--white);
-  transition: background-color 0.18s var(--ease);
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--accent-ink);
 }
-.serviceList a:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
-.serviceList a svg {
-  width: 36px;
-  height: 36px;
-  padding: 11px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.8;
-  transition: transform 0.18s var(--ease), background-color 0.18s;
-}
-.serviceList a:hover svg {
-  background: var(--sky);
-  border-color: var(--sky);
-  color: var(--ink);
-}
-.serviceList a:hover .serviceName {
+.promises > li:nth-child(2) .promiseCta {
   color: var(--sky);
 }
-.serviceName {
-  font-family: var(--font-display);
-  font-weight: 650;
-  font-size: 1.125rem;
-  transition: color 0.18s;
+.promiseCta svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: transform 0.18s var(--ease);
 }
-.serviceSum {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.9375rem;
+.promise:hover .promiseCta svg {
+  transform: translateX(3px);
 }
 @media (max-width: 900px) {
-  .service {
+  .promises {
     grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .serviceList a {
-    grid-template-columns: minmax(0, 1fr) 36px;
-  }
-  .serviceSum {
-    grid-column: 1;
-  }
-  .serviceList a svg {
-    grid-column: 2;
-    grid-row: 1;
   }
 }

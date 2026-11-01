@@ -62,8 +62,8 @@ export const siteDescription =
 export const nav = {
   primary: [
     { href: '/products', label: 'Products' },
+    { href: '/shop', label: 'Shop' },
     { href: '/applications', label: 'Applications' },
-    { href: '/#explorer', label: '3D Explorer' },
     { href: '/company', label: 'Company' },
     { href: '/service', label: 'Service' },
     { href: '/contact', label: 'Contact' },

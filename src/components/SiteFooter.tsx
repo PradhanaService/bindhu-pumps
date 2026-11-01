@@ -42,9 +42,6 @@ export function SiteFooter() {
                   <Link href="/company">About and capabilities</Link>
                 </li>
                 <li>
-                  <Link href="/#explorer">3D pump explorer</Link>
-                </li>
-                <li>
                   <Link href="/contact">Contact</Link>
                 </li>
               </ul>
