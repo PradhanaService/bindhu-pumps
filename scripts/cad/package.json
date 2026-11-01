@@ -1,0 +1,19 @@
+{
+  "name": "cad-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "Converts the supplied STEP file into the optimised GLB used by the 3D viewer.",
+  "scripts": {
+    "tessellate": "node 1-tessellate.mjs source/reference-pump.step",
+    "build": "node 2-build-glb.mjs",
+    "measure": "node 3-measure.mjs",
+    "all": "npm run tessellate && npm run build && npm run measure"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "^4.2.0",
+    "@gltf-transform/extensions": "^4.2.0",
+    "@gltf-transform/functions": "^4.2.0",
+    "meshoptimizer": "^0.22.0",
+    "occt-import-js": "^0.0.23"
+  }
+}
